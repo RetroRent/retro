@@ -1,0 +1,35 @@
+.root {
+    margin-top: 10%;
+    display: inline-flex !important;
+    flexWrap: wrap;
+    justifyContent: space-around;
+    overflow: hidden;
+    backgroundColor: 'theme.palette.background.paper';
+}
+
+.gridList {
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+}
+
+.AddItemB {
+    width: 25%;
+}
+
+.marketTitle {
+    margin-left: 15%;
+    margin-top: 5%;
+    margin-right: 15%;
+}
+
+.spanText {
+    margin-block-start: 1.2em !important;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.icon {
+    color: rgba(255, 255, 255, 0.54) !important;
+}

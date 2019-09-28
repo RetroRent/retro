@@ -1,0 +1,137 @@
+.signup-container {
+    text-align: center;
+}
+
+
+.signup-content {
+    background: #fff;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 400px;
+    display: inline-block;
+    margin-top: 30px;
+    vertical-align: middle;
+    position: relative;    
+    padding: 35px;
+}
+
+.social-btn {
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.policy{
+    margin-top: 10px;
+    font-size: small !important;
+}
+
+
+.policycheck{
+    width: 16px !important;
+    height: 16px !important;
+}
+
+
+/*.social-btn img {*/
+    /*height: 32px;*/
+    /*float: left;*/
+    /*margin-top: 10px;*/
+/*}*/
+
+.social-btn.google {
+    margin-top: 7px;
+}
+
+.social-btn.facebook img {
+    height: 24px;
+    margin-left: 3px;
+}
+
+.social-btn.github img {
+    height: 24px;
+    margin-left: 3px;
+}
+
+.login-link {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+}
+
+.signup-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+
+/* Customize the label (the container) */
+.checkboxRetrorent.container {
+    display: block;
+    position: relative;
+    text-align-last: left;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkboxRetrorent.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkboxRetrorent.checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkboxRetrorent.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkboxRetrorent.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkboxRetrorent.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkboxRetrorent.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkboxRetrorent.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

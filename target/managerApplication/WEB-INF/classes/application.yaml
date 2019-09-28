@@ -1,0 +1,133 @@
+spring:
+  # :::::::::::::::::::::::::::::::::::::::::::::
+  # VIEW RESOLVER
+  # :::::::::::::::::::::::::::::::::::::::::::::
+
+  mvc.view.prefix: /WEB-INF/jsp/
+  mvc.view.suffix: .jsp
+
+  messages:
+    encoding: UTF-8
+
+  ## MULTIPART (MultipartProperties)
+  # Enable multipart uploads
+  servlet :
+    multipart :
+      enabled : true
+      file-size-threshold : 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
+  ## File Storage Properties
+  # All files uploaded through the REST API will be stored in this directory
+  file :
+    uploadDir: C:\LiorCode\ItemsPhoto
+
+  # Database
+  datasource:
+    driverClassName : com.mysql.jdbc.Driver
+    url : jdbc:mysql://127.0.0.1:3306/retrorent?allowPublicKeyRetrieval:true&useSSL:false
+    username :  root
+    password : hd$s@!st$d3gS
+
+  mail:
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
+          starttls:
+            enable: true
+    password: Rr1234!@#$
+    username: retrorent4all@gmail.com
+    port: 587
+    host: smtp.gmail.com
+
+  jpa:
+    show-sql : true
+    hibernate:
+      ddl-auto : update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.MySQL5Dialect
+        show_sql: true
+        hbm2ddl.auto: create
+        entitymanager.packagesToScan: com.retro_rent
+
+  #hibernate.hbm2ddl.auto: update
+
+  #
+  # initDB
+  db.category.type : Cars,Ford,Mustang-Cars,Jaguar,XJ6-Cars,Dodge,Charger 383-Cars,Jaguar,240-Cars,Alfa Romeo,GTV 2000-Cars,Porsche,924-Cars,Porsche,928-Cars,Porsche,944-Cars,Chevrolet,Fleetline-Cars,Chevrolet,Corvette-Cars,Chevrolet,Bel Air Hardtop-Cars,Ford,Eifel Cabrio Limousine-Cars,Jaguar,A Type-Cars,Buik,Senchuri-Cars,Mercury,Cougar-Cars,Riley,Nine Marlin-Cars,Imperial ,Crown Convertible -Cars,Shelby,427 Cobra-Cars,Jaguar,E Type-Cars,Maserati,Ghibli 4.7-Cars,Aston Martin,DB5-Cars,Mercedes,300SL Gullwing-Cars,Mustang,Boss 429-Cars,Corvette ,Sting Ray-Cars,Ferrari Dino,246 GT-Cars,Alfa Romeo,Spider Duetto-Cars,Dodge,Charger-Cars,Lamborghini,Miura-Cars,Toyota ,2000GT-Cars,Ferrari,250 GTE-Cars,Datsun,240Z-Cars,Chevrolet,Camaro-Cars,Jaguar,XJS-Cars,Lotus,Esprit-Cars,Cadillac,Phaeton 5859-Cars,Cadillac,Eldorado Biarritz-Cars,Cadillac,DeVille-Cars,Dodge,Viper-Cars,Mercedes Benz,540K-Cars,Volvo,P1800-Cars,Hudson,Hornet-Cars,Ford,Thunderbird-Cars,DeLorean,DMC 12-Cars,BMW,M1-Cars,Ferrari,F40	-Cars,Lincoln,Continental-Cars,Nissan,Fairlady Z-Cars,Ferrari,Testarossa-Cars,Aston Martin,DB6-Cars,BMW,CSL-Cars,Porsche,365-Cars,Ferrari,F50-Cars,MG,MGA-Cars,BMW,M6-Cars,Aston Martin,DB4-Cars,Porsche,959-Cars,Ferrari,275-Cars,Maserati,3500 GT-Cars,BMW,507-Cars,AC,Cobra-Cars,Aston Martin,DB5-Cars,Mercedes Benz,300SL-Cars,Porsche,550
+  #db.experiment.pelletPertubation : None,ommisions,Taste
+  #db.experiment.events : grab,lift,atmouth,lick
+
+  app:
+    auth:
+      tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+      tokenExpirationMsec: 864000000
+    auth2:
+      authorizedRedirectUris: https://retrorent.xyz:3000/oauth2/redirect
+
+  security:
+     oauth2:
+       client:
+         registration:
+           google:
+             clientId: 661384729116-5qq9nsb40bj4i46cn963a0spm6sqe5n3.apps.googleusercontent.com
+             clientSecret: -_0O0sq44zQI4kVvJBAsP3jN
+             redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+             scope:
+               - email
+               - profile
+           facebook:
+             clientId: 753214071774057
+             clientSecret: f62a9e42384919b1ca73ff6268497a3b
+             redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+             scope:
+               - email
+               - public_profile
+         provider:
+           facebook:
+             authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+             tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+             userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+
+  queries:
+    users-query: select email, password from user where email=?
+    roles-query: select u.email, r.role from user u inner join user_role ur on(u.user_id:ur.user_id) inner join role r on(ur.role_id:r.role_id) where u.email=?
+
+
+
+  logging:
+    level:
+      root: WARN
+      org:
+        springframework:
+          security: DEBUG
+          web: ERROR
+        hibernate: WARN
+        apache.commons.dbcp2: WARN
+    file : retro_rent.log
+    pattern.file: D%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n
+
+  server:
+    error:
+      whitelabel:
+        enabled: false
+
+
+server:
+  #port : 8080
+  server.port: 8443
+  server.ssl.key-store: keystore.p12
+  server.ssl.key-store-password: Aa123456
+  server.ssl.keyStoreType: PKCS12
+  server.ssl.keyAlias: tomcat
+
+
+client.redirect.uri: http://localhost:3000
