@@ -8,7 +8,11 @@
 
 .profile-info .profile-avatar img {
     border-radius: 50%;
-    max-width: 250px;
+    max-width: 70px;
+}
+.text-avatar img {
+    border-radius: 50%;
+    max-width: 70px;
 }
 
 .marketTitle {

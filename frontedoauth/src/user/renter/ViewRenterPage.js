@@ -21,7 +21,6 @@ class ViewRenterPage extends Component {
         this.getAllItemsF = this.getAllItemsF.bind(this);
     }
 
-
     componentDidMount() {
         this.getAllItemsF();
     }

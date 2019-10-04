@@ -30,7 +30,7 @@ class RegistrationEnd extends Component {
         return (
             <div className="signup-container">
                 <div className="signup-content">
-                <h1 className="signup-title">Registration to     RetroRent , step 2</h1>
+                <h1 className="signup-title">Registration to RetroRent-Step 2</h1>
                 <RegistrationEndForm {...this.props} />
                 </div>
             </div>
@@ -136,7 +136,7 @@ class RegistrationEndForm extends Component {
                     <Grid container>
                         <Grid item xs={11}>
                             <input type="text" name="paymentLink"
-                                   className="form-control payment" placeholder="Payment Link - PayPalMe"
+                                   className="form-control payment" placeholder="Payment Link - PayPal.Me"
 
                                    value={this.state.paymentLink} onChange={this.handleInputChange}/>
                             <label>      Example: https://paypal.me/username</label>
@@ -167,7 +167,7 @@ class RegistrationEndForm extends Component {
 
                 </div>
                 <div className="form-item">
-                    <label className="container checkboxRetrorent"><Link to="/policy">Policy Approval</Link>
+                    <label className="container checkboxRetrorent"><Link to="/policy">I Accept Terms and Conditions</Link>
                         <input type="checkbox" name="policy"
                                className="form-control" required/>
                         <span className="checkboxRetrorent checkmark"/>
@@ -176,7 +176,7 @@ class RegistrationEndForm extends Component {
                 </div>
 
                 <div className="form-item">
-                    <Button type="submit" color="primary" className="AddItemB"><SaveAlt/>Save</Button>
+                    <Button type="submit" color="primary" className="AddItemB"><SaveAlt/>Register</Button>
                 </div>
             </form>                    
 

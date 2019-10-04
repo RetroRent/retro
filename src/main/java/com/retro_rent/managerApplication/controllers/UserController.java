@@ -42,7 +42,6 @@ public class UserController {
     @Autowired
     private TenantDao tenantRepository;
 
-
     @Qualifier("roleRepository")
     @Autowired
     private RoleDao roleRepository;

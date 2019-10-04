@@ -118,7 +118,7 @@ class Cart extends Component {
                     });
 
                 }}>
-                    <AddShoppingCartIcon /> Purchase
+                    <AddShoppingCartIcon /> Place an Order
                 </Button>
             </div>
         );
@@ -158,10 +158,11 @@ function handleAction(event, rowData) {
 function MaterialTableDemo() {
     const [state, setState] = React.useState({
         columns: [
-            { title: 'Id', field: 'id' },
-            { title: 'Item Manufacturer', field: 'item.itemSCategory' },
-            { title: 'Item Modele', field: 'item.itemTCategory' },
-            { title: 'Item Year Of Production', field: 'item.year_of_production' },
+
+            { title: 'Renter', field: 'item.ownerName' },
+            { title: 'Manufacturer', field: 'item.itemSCategory' },
+            { title: 'Model', field: 'item.itemTCategory' },
+            { title: 'Year', field: 'item.year_of_production' },
             { title: 'Total Days', field: 'totalDaysRent' },
             { title: 'total Price', field: 'totalPriceRent' },
             { title: 'Start Day', field: 'rentalStartDay' },

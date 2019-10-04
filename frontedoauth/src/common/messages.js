@@ -13,7 +13,7 @@ import {getAllMessage, clearMessage} from "../util/APIUtils";
 import Alert from "react-s-alert";
 import Clear from '@material-ui/icons/Clear';
 import Button from '@material-ui/core/IconButton';
-
+import _ from 'lodash'
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -40,8 +40,9 @@ class Messages extends Component {
         });
 
         getAllMessage().then(response => {
+            const sortedBy = _.orderBy(response, ['id'], ['desc']);
             this.setState({
-                messages : response,
+                messages : sortedBy,
                 loading : false
             });
         }).catch(error => {
@@ -73,7 +74,7 @@ class Messages extends Component {
             <div className="border-messages">
                 <Grid container className="des">
                     <Grid item xs={12}>
-                        <h2>User Messages</h2>
+                        <h2>Notifications</h2>
                         <Grid container spacing={2}>
                             {this.state.messages.map(message => (
                                 <Grid item xs={12}>

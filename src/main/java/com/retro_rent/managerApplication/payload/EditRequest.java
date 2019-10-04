@@ -36,7 +36,7 @@ public class EditRequest {
     @NotBlank
     private String postal_code;
 
-    @NotBlank
+
     private String img_url;
 
 

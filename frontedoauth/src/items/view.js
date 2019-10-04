@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link, Redirect} from 'react-router-dom'
 import './view.css';
 import 'react-datepicker/dist/react-datepicker.css'
 import GridList from '@material-ui/core/GridList';
@@ -19,8 +19,11 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
+import moment from 'moment'
 import Carousel from 'react-bootstrap/Carousel'
+import {removeFromWishList, addToWishList} from '../util/APIUtils'
 import "bootstrap/dist/css/bootstrap.css";
 
 class View extends Component {
@@ -29,17 +32,67 @@ class View extends Component {
         console.log(props);
 
         this.state = {
-            selectedItem : this.props.selectedItem,
+            selectedItem: this.props.selectedItem,
             authenticated: this.props.props.authenticated,
             currentUser: this.props.props.currentUser,
-            currentLoginPhase : this.props.props.currentLoginPhase,
-            history : this.props.props.history,
-            viewOwner : false
+            currentLoginPhase: this.props.props.currentLoginPhase,
+            history: this.props.props.history,
+            viewOwner: false,
+
         };
     }
 
     componentDidMount() {
     }
+
+    removeFromWishlist(tile) {
+        if ((!this.props.props.authenticated) || (this.props.props.currentUser !== null && this.props.props.currentUser !== undefined && (this.props.props.currentUser.role.role === 'RENTER'))) {
+            Alert.error('Only registered Tenant allow to check items as star');
+            return;
+        }
+
+        removeFromWishList(tile.id)
+            .then(response => {
+                if (response.success) {
+                    Alert.success((response && response.message) || 'Item removed from wish list');
+                    this.setState({
+                        wishAction: true
+                    });
+
+                    window.location.reload();
+
+                } else {
+                    Alert.error((response && response.message) || 'Oops! Something went wrong. Please try again!');
+                }
+            }).catch(error => {
+            Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
+        });
+    }
+
+    addToWishlist(tile) {
+        if ((!this.props.props.authenticated) || (this.props.props.currentUser !== null && this.props.props.currentUser !== undefined && (this.props.props.currentUser.role.role === 'RENTER'))) {
+            Alert.error('Only registered Tenant allow to check items as star');
+            return;
+        }
+
+
+        addToWishList(tile.id)
+            .then(response => {
+                if (response.success) {
+                    Alert.success((response && response.message) || 'Item Added to wish list');
+                    this.setState({
+                        wishAction: true
+                    });
+                    window.location.reload();
+
+                } else {
+                    Alert.error((response && response.message) || 'Oops! Something went wrong. Please try again!');
+                }
+            }).catch(error => {
+            Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
+        });
+    }
+
 
     render() {
         if (this.state.viewOwner) {
@@ -50,12 +103,26 @@ class View extends Component {
         return (
             <div>
 
-                <h2> {this.state.selectedItem.itemSCategory} - {this.state.selectedItem.itemTCategory}</h2>
+                <h2> {this.state.selectedItem.itemSCategory} - {this.state.selectedItem.itemTCategory}{
+                    this.props.selectedItem.star ?
+                        <Button aria-label={`star`} className="icon"  onClick={() => {
+                            this.removeFromWishlist(this.state.selectedItem)
+                        }}>
+                            <StarIcon color="primary"/>
+                        </Button>
+                        :
+                        <Button aria-label={`star`} className="icon"  onClick={() => {
+                            this.addToWishlist(this.state.selectedItem)
+                        }}>
+                            <StarBorderIcon color="primary"/>
+                        </Button>
+                }</h2>
+
                 <Grid container>
-                    <Grid item xs={12} lg={6} >
+                    <Grid item xs={12} lg={6}>
                         <Grid container className="des">
-                            <Grid item xs={6} lg={3} >
-                                <h7>Description </h7>
+                            <Grid item xs={6} lg={3}>
+                                <h7>Description</h7>
                             </Grid>
                             <Grid item xs={6} lg={3} className="">
                                 {this.state.selectedItem.description}
@@ -71,7 +138,7 @@ class View extends Component {
                         </Grid>
                         <Grid container className="des">
                             <Grid item xs={6} lg={3}>
-                                <h7> Price Per Day </h7>
+                                <h7> Price Per Day</h7>
                             </Grid>
                             <Grid item xs={6} lg={3} className="">
                                 {this.state.selectedItem.pricePerDay}
@@ -80,12 +147,12 @@ class View extends Component {
                         </Grid>
                         <Grid container className="des">
                             <Grid item xs={6} lg={3}>
-                                <h7> Renter Name </h7>
+                                <h7> Renter Name</h7>
                             </Grid>
                             <Grid item xs={6} lg={3} className="">
                                 <Button color="secondary" className="userlink" onClick={() => {
                                     this.setState({
-                                       viewOwner : true
+                                        viewOwner: true
                                     });
                                 }}>
                                     <PersonIcon/>
@@ -95,7 +162,7 @@ class View extends Component {
                         </Grid>
                         <Grid container className="des">
                             <Grid item xs={6} lg={3}>
-                                <h7> Renter Email </h7>
+                                <h7> Renter Email</h7>
                             </Grid>
                             <Grid item xs={6} lg={3} className="">
                                 {this.state.selectedItem.ownerEmail}</Grid>
@@ -121,61 +188,62 @@ class View extends Component {
                         <AddOrderdItemForm {...this.state}/>
                     ) : (null)}
 
-                    <div style={{ padding: 2 }}>
-                    <Grid item xs={12} lg={10}>
-                        <h5>Item Reviews</h5>
-                        <Grid container spacing={1}>
-                            {this.state.selectedItem.itemReviews.map(review => (
-                                <Grid item xs={8}>
-                                    <Card className="card">
-                                        <CardHeader
-                                            avatar={
-                                                <Avatar className="avatar">
-                                                    <img className="avatar-img" src={review.given_by.imageUrl} alt={review.given_by.name}/>
-                                                </Avatar>
-                                            }
-                                            title={review.given_by.name}
-                                            subheader={review.givenOn.toString()}
+                    <div style={{padding: 1}}>
+                        <Grid item xs={12} lg={12}>
+                            <h5>Item Reviews</h5>
+                            <Grid container spacing={1}>
+                                {this.state.selectedItem.itemReviews.map(review => (
+                                    <Grid item xs={12}>
+                                        <Card className="card">
+                                            <CardHeader
+                                                avatar={
+                                                    <Avatar className="avatar">
+                                                        <img className="avatar-img" src={review.given_by.imageUrl}
+                                                             alt={review.given_by.name}/>
+                                                    </Avatar>
+                                                }
+                                                title={review.given_by.name}
+                                                subheader={review.givenOn.toString()}
 
-                                        />
-                                        <CardContent>
-                                            <Grid item xs={12} lg={6}>
-                                                <StarRatings
-                                                    className="stars"
-                                                    rating={review.rank}
-                                                    starRatedColor="blue"
-                                                    disabled
-                                                    starDimension="20px"
-                                                    starSpacing="1px"
-                                                    numberOfStars={5}
-                                                    name='rankStars'
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} lg={6}>
-                                                <Typography variant="h6" color="textSecondary" component="p">
-                                                    {review.text}
-                                                </Typography>
-                                            </Grid>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            ))}
+                                            />
+                                            <CardContent>
+                                                <Grid item xs={12} lg={12}>
+                                                    <StarRatings
+                                                        className="stars"
+                                                        rating={review.rank}
+                                                        starRatedColor="blue"
+                                                        disabled
+                                                        starDimension="20px"
+                                                        starSpacing="1px"
+                                                        numberOfStars={5}
+                                                        name='rankStars'
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={12} lg={6}>
+                                                    <Typography paragraph color="textSecondary" >
+                                                        {review.text}
+                                                    </Typography>
+                                                </Grid>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+                                ))}
+                            </Grid>
                         </Grid>
-                    </Grid>
                     </div>
                 </Grid>
                 {/*<div className="container">*/}
-                    {/*<Carousel>*/}
-                        {/*{this.state.selectedItem.imageItemNames.map(imageName => (*/}
-                            {/*<Carousel.Item>*/}
-                                {/*<img*/}
-                                    {/*className="d-block w-100"*/}
-                                    {/*src={API_BASE_URL + "/items/image/" + this.state.selectedItem.userID + "/" + this.state.selectedItem.id + "/" + imageName}*/}
-                                    {/*alt={this.state.selectedItem.itemSCategory + "-" + this.state.selectedItem.itemTCategory}*/}
-                                {/*/>*/}
-                            {/*</Carousel.Item>*/}
-                        {/*))}*/}
-                    {/*</Carousel>*/}
+                {/*<Carousel>*/}
+                {/*{this.state.selectedItem.imageItemNames.map(imageName => (*/}
+                {/*<Carousel.Item>*/}
+                {/*<img*/}
+                {/*className="d-block w-100"*/}
+                {/*src={API_BASE_URL + "/items/image/" + this.state.selectedItem.userID + "/" + this.state.selectedItem.id + "/" + imageName}*/}
+                {/*alt={this.state.selectedItem.itemSCategory + "-" + this.state.selectedItem.itemTCategory}*/}
+                {/*/>*/}
+                {/*</Carousel.Item>*/}
+                {/*))}*/}
+                {/*</Carousel>*/}
                 {/*</div>*/}
             </div>
         );
@@ -205,8 +273,7 @@ class AddOrderdItemForm extends Component {
 
         addItemsToCart(addItemToCartRequest)
             .then(response => {
-                if (response.success)
-                {
+                if (response.success) {
                     Alert.success("You're successfully add new item to cart.");
                     window.location.reload();
                 } else {
@@ -220,13 +287,13 @@ class AddOrderdItemForm extends Component {
 
     setStartDate(date) {
         this.setState({
-            rentalStartDay : date
+            rentalStartDay: date
         });
     }
 
     setEndDate(date) {
         this.setState({
-            rentalEndDay : date
+            rentalEndDay: date
         });
     }
 
@@ -278,6 +345,7 @@ class AddOrderdItemForm extends Component {
                     <div className="form-item">
                         <label className="edit labelSize">Start Date</label>
                         <DatePicker
+                            minDate={moment().toDate()}
                             selected={this.state.rentalStartDay}
                             filterDate={isGoodday}
                             onChange={date => this.setStartDate(date)}
@@ -290,6 +358,7 @@ class AddOrderdItemForm extends Component {
                     <div className="form-item">
                         <label className="edit labelSize">End Date</label>
                         <DatePicker
+                            minDate={moment().toDate()}
                             selected={this.state.rentalEndDay}
                             filterDate={isGoodday}
                             excludeDates={exclude}
@@ -303,7 +372,7 @@ class AddOrderdItemForm extends Component {
                     <div className="form-item">
                         <label>Add to Cart</label>
                         <Button type="submit" variant="contained" color="primary" className="AddItemB">
-                            <AddShoppingCartIcon />
+                            <AddShoppingCartIcon/>
                         </Button>
                     </div>
                 </form>

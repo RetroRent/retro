@@ -28,7 +28,7 @@ class Signup extends Component {
         return (
             <div className="signup-container">
                 <div className="signup-content">
-                    <h1 className="signup-title">Signup to RetroRent, step 1</h1>
+                    <h1 className="signup-title">Signup to RetroRent-Step 1</h1>
                     <SocialLogin />
                     <div className="or-separator">
                         <span className="or-text">OR</span>
@@ -89,7 +89,8 @@ class SignupForm extends Component {
         .then(response => {
             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
             // Alert.success("You're successfully registered.");
-            this.props.history.push("/");
+            this.props.history.push("/registrationEnd");
+
             window.location.reload();
 
         }).catch(error => {

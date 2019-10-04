@@ -43,7 +43,6 @@ class EditUserForm extends Component {
             street: props.currentUser.street,
             home_number: props.currentUser.address_number,
             postal_code: props.currentUser.postal_code,
-            img_url: props.currentUser.imageUrl,
             user_type_tenant: props.currentUser.role.role === 'TENANT',
             user_type_renter: props.currentUser.role.role === 'RENTER'
         };
@@ -90,7 +89,7 @@ class EditUserForm extends Component {
         event.preventDefault();
 
         const editRequest = Object.assign({}, this.state);
-
+        debugger
         edit(editRequest)
             .then(response => {
                 if (response.success) {
@@ -220,27 +219,18 @@ class EditUserForm extends Component {
                 <div className="form-item">
                     <Grid container>
                         <Grid item xs={3}>
-                            <label >PayPal-Me:</label>
+                            <label >PayPal.Me:</label>
                         </Grid>
                         <Grid item xs={9}>
                             <input type="text" name="paymentLink"
-                                   className="form-control edit formSize" placeholder="Payment Link - PayPalMe"
+                                   className="form-control edit formSize" placeholder="Payment Link - PayPal.Me"
                                    value={this.state.paymentLink} onChange={this.handleInputChange}/>
+                            <label>      Example: https://paypal.me/username</label>
+
                         </Grid>
                     </Grid>
                  </div>
-                <div className="form-item">
-                    <Grid container>
-                        <Grid item xs={3}>
-                            <label >Image URL:</label>
-                        </Grid>
-                        <Grid item xs={9}>
-                            <input type="text" name="img_url"
-                                   className="form-control edit formSize" placeholder="Image Url"
-                                   value={this.state.img_url} onChange={this.handleInputChange}/>
-                        </Grid>
-                    </Grid>
-                   </div>
+                <label>Choose Your Role</label>
                 <div className="form-item">
                     <label className="container checkboxRetrorent">renter
                         <input type="checkbox" name="user_type_renter"
@@ -254,9 +244,11 @@ class EditUserForm extends Component {
                                value={this.state.user_type_tenant} onChange={this.handleCheckBoxInputChange} checked={this.state.user_type_tenant}/>
                         <span className="checkboxRetrorent checkmark"/>
                     </label>
+                    <label>*You can choose both </label>
                 </div>
+
                 <div className="form-item">
-                    <Button type="submit" variant="contained" color="primary" className="AddItemB"><Edit/> Edit</Button>
+                    <Button type="submit" variant="contained" color="primary" className="AddItemB"><Edit/> Save</Button>
                 </div>
             </form>
         );

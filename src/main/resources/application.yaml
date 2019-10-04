@@ -54,14 +54,14 @@ spring:
       hibernate:
         dialect : org.hibernate.dialect.MySQL5Dialect
         show_sql: true
-        hbm2ddl.auto: create
+        hbm2ddl.auto: update
         entitymanager.packagesToScan: com.retro_rent
 
   #hibernate.hbm2ddl.auto: update
 
   #
   # initDB
-  db.category.type : Cars,Ford,Mustang-Cars,Jaguar,XJ6-Cars,Dodge,Charger 383-Cars,Jaguar,240-Cars,Alfa Romeo,GTV 2000-Cars,Porsche,924-Cars,Porsche,928-Cars,Porsche,944-Cars,Chevrolet,Fleetline-Cars,Chevrolet,Corvette-Cars,Chevrolet,Bel Air Hardtop-Cars,Ford,Eifel Cabrio Limousine-Cars,Jaguar,A Type-Cars,Buik,Senchuri-Cars,Mercury,Cougar-Cars,Riley,Nine Marlin-Cars,Imperial ,Crown Convertible -Cars,Shelby,427 Cobra-Cars,Jaguar,E Type-Cars,Maserati,Ghibli 4.7-Cars,Aston Martin,DB5-Cars,Mercedes,300SL Gullwing-Cars,Mustang,Boss 429-Cars,Corvette ,Sting Ray-Cars,Ferrari Dino,246 GT-Cars,Alfa Romeo,Spider Duetto-Cars,Dodge,Charger-Cars,Lamborghini,Miura-Cars,Toyota ,2000GT-Cars,Ferrari,250 GTE-Cars,Datsun,240Z-Cars,Chevrolet,Camaro-Cars,Jaguar,XJS-Cars,Lotus,Esprit-Cars,Cadillac,Phaeton 5859-Cars,Cadillac,Eldorado Biarritz-Cars,Cadillac,DeVille-Cars,Dodge,Viper-Cars,Mercedes Benz,540K-Cars,Volvo,P1800-Cars,Hudson,Hornet-Cars,Ford,Thunderbird-Cars,DeLorean,DMC 12-Cars,BMW,M1-Cars,Ferrari,F40	-Cars,Lincoln,Continental-Cars,Nissan,Fairlady Z-Cars,Ferrari,Testarossa-Cars,Aston Martin,DB6-Cars,BMW,CSL-Cars,Porsche,365-Cars,Ferrari,F50-Cars,MG,MGA-Cars,BMW,M6-Cars,Aston Martin,DB4-Cars,Porsche,959-Cars,Ferrari,275-Cars,Maserati,3500 GT-Cars,BMW,507-Cars,AC,Cobra-Cars,Aston Martin,DB5-Cars,Mercedes Benz,300SL-Cars,Porsche,550
+  db.category.type : Cars,AC,Cobra-Cars,Alfa Romeo,GTV2000-Cars,Alfa Romeo,Spider,Duetto-Cars,Aston Martin,DB5-Cars,Aston Martin,DB6-Cars,Aston Martin,DB4-Cars,Aston Martin,DB5-Cars,BMW,M1-Cars,BMW,CSL-Cars,BMW,M6-Cars,BMW,507-Cars,Buick,Senchuri-Cars,Cadillac,Phaeton 5859-Cars,Cadillac,Eldorado Biarritz-Cars,Cadillac,DeVille-Cars,Chevrolet,Fleetline-Cars,Chevrolet,Corvette-Cars,Chevrolet,Bel Air Hardtop-Cars,Chevrolet,Camaro-Cars,Corvette,Sting Ray-Cars,Datsun,240Z-Cars,DeLorean,DMC12-Cars,Dodge,Charger383-Cars,Dodge,Charger-Cars,Dodge,Viper-Cars,Ferrari,250GTE-Cars,Ferrari,F40-Cars,Ferrari,Testarossa-Cars,Ferrari,F50-Cars,Ferrari,275-Cars,Ferrari Dino,246GT-Cars,Ford,Mustang-Cars,Ford,Eifel Cabrio Limousine-Cars,Ford,Thunderbird-Cars,Hudson,Hornet-Cars,Imperial,Crown Convertible-Cars,Jaguar,XJ6-Cars,Jaguar,240-Cars,Jaguar,A Type-Cars,Jaguar,E Type-Cars,Jaguar,XJS-Cars,Lamborghini,Miura-Cars,Lincoln,Continental-Cars,Lotus,Esprit-Cars,Maserati,Ghibli4.7-Cars,Maserati,3500GT-Cars,Mercedes Benz,300SL Gullwing-Cars,Mercedes Benz,540K-Cars,Mercedes Benz,300SL-Cars,Mercury,Cougar-Cars,MG,MGA-Cars,Mustang,Boss429-Cars,Nissan,FairladyZ-Cars,Porsche,365-Cars,Porsche,550-Cars,Porsche,924-Cars,Porsche,928-Cars,Porsche,944-Cars,Porsche,959-Cars,Riley,Nine Marlin-Cars,Shelby,427 Cobra-Cars,Toyota,2000GT-Cars,Volvo,P1800
   #db.experiment.pelletPertubation : None,ommisions,Taste
   #db.experiment.events : grab,lift,atmouth,lick
 

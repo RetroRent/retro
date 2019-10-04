@@ -46,6 +46,7 @@
 }
 
 
+
 .goback {
     margin-top: 10%;
 }
@@ -133,12 +134,12 @@
 
 .profile-info .profile-avatar img {
     border-radius: 50%;
-    max-width: 250px;
+    max-width: 70px;
 }
 
 .profile-info .profile-name {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 10px;
 }
 
 .profile-info .profile-email {
@@ -165,4 +166,10 @@
     line-height: 200px;
     color: #fff;
     font-size: 3em;
+}
+
+/*for table dates*/
+.MuiTableCell-head, td {
+    max-width:100%;
+    white-space:nowrap;
 }

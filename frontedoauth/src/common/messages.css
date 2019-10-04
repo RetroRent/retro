@@ -23,6 +23,9 @@
     margin-right: 15%;
 }
 
+img {
+    cursor: pointer;
+}
 .userlink {
     font-size: 1.1rem !important;
     padding: 0px !important;

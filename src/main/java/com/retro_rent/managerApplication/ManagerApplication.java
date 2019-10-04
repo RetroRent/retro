@@ -45,15 +45,6 @@ public class ManagerApplication  extends SpringBootServletInitializer {
     private Environment env;
 
 
-//    @Autowired
-//    private ExperimentTypeDao experimentTypeDao;
-//
-//    @Autowired
-//    private ExperimentInjectionsDao experimentInjectionsDao;
-//
-//
-//    @Autowired
-//    private ExperimentPelletPertubationDao experimentPelletPertubationDao;
 
     @Autowired
     private RoleDao roleDao;

@@ -45,3 +45,11 @@
 .app-nav ul li a.active {
     color: #0f96f6;
 }
+
+
+/*media queries*/
+@media (min-width: 320px) and (max-width: 480px) {
+.app-body {
+    margin-top: 100px;
+    }
+}

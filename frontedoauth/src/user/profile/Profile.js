@@ -310,7 +310,6 @@ class Profile extends Component {
         }
 
         return (
-
             <div className="profile-container">
                 <div className="container">
                     <div className="profile-info">
@@ -319,18 +318,18 @@ class Profile extends Component {
                                 this.props.currentUser.imageUrl ? (
                                     <img src={this.props.currentUser.imageUrl} alt={this.props.currentUser.name}/>
                                 ) : (
-                                    <div className="text-avatar">
-                                        <span>{this.props.currentUser.name && this.props.currentUser.name[0]}</span>
-                                    </div>
+
+                                <Avatar style={{positon:"relative",marginTop:"25px",top:"50%",left:"50%",transform:"translate(-50%, -50%)"}}>{this.props.currentUser.name && this.props.currentUser.name[0]}</Avatar>
+
                                 )
                             }
                         </div>
                         <div className="profile-name">
-                           <h5>{this.props.currentUser.name}</h5>
+                            <p className="profile-name">{this.props.currentUser.name}</p>
                            <p className="profile-email">{this.props.currentUser.email}</p>
                         </div>
 
-                        <span className="signup-link"> <Link to="/edit">edit profile</Link></span>
+                        <span className="signup-link"> <Link to="/edit">Edit Profile</Link></span>
                     </div>
 
                 </div>
@@ -341,7 +340,7 @@ class Profile extends Component {
                         <this.MaterialTableDemo {...this.state.renterItems}/>
                         <Button variant="contained" color="primary" className="AddItemBC" onClick={() => {this.props.history.push('/items')}}>
                             <AddBox />
-                            Create New Item
+                            Add New Item
                         </Button>
                     </div>
                     <div className="container tableTop">
@@ -564,6 +563,7 @@ class Profile extends Component {
                                 starSpacing="1px"
                                 numberOfStars={5}
                                 name='rankStars'
+                                starHoverColor={'rgb(109, 122, 130)'}
                             />
                             </Grid>
                             <Grid item xs={12}>
@@ -586,14 +586,12 @@ class Profile extends Component {
     MaterialTableDemo() {
         const [state1, setState1] = React.useState({
             columns: [
-                { title: 'Id', field: 'id' },
-                { title: 'Labels', field: 'labels' },
-                { title: 'Description', field: 'description' },
-                { title: 'Year Of Production', field: 'year_of_production' },
-                { title: 'Price Per Day', field: 'pricePerDay' },
-                { title: 'Category', field: 'itemFCategory' },
                 { title: 'Manufacturer', field: 'itemSCategory' },
-                { title: 'Model', field: 'itemTCategory' }
+                { title: 'Model', field: 'itemTCategory' },
+                { title: 'Description', field: 'description' },
+                { title: 'Year', field: 'year_of_production' },
+                { title: 'Price Per Day', field: 'pricePerDay' }
+
             ]
         });
 
@@ -657,7 +655,7 @@ class Profile extends Component {
         } else {
             return  (
                 <div className="MG">
-                    <h2>Renter Items Empty</h2>
+                    <h4>Renter Items Empty</h4>
                 </div>
             );
         }
@@ -666,16 +664,14 @@ class Profile extends Component {
     MaterialTableTenantWishList() {
         const [state1, setState1] = React.useState({
             columns: [
-                { title: 'Id', field: 'id' },
-                { title: 'Labels', field: 'labels' },
-                { title: 'Description', field: 'description' },
-                { title: 'Year Of Production', field: 'year_of_production' },
-                { title: 'Price Per Day', field: 'pricePerDay' },
-                { title: 'Category', field: 'itemFCategory' },
                 { title: 'Manufacturer', field: 'itemSCategory' },
                 { title: 'Model', field: 'itemTCategory' },
                 { title: 'Owner Name', field: 'ownerName' },
-                { title: 'Owner Email', field: 'ownerEmail' }
+                { title: 'Owner Email', field: 'ownerEmail' },
+                { title: 'Description', field: 'description' },
+                { title: 'Year', field: 'year_of_production' },
+                { title: 'Price Per Day', field: 'pricePerDay' },
+
             ]
         });
 
@@ -721,7 +717,7 @@ class Profile extends Component {
                                 }
                             })
                         ]}
-                        title="Tenant Wish List"
+                        title="Wish List"
                         columns={state1.columns}
                         icons={tableIcons}
                         data={this.state.tenantWishList}
@@ -731,7 +727,7 @@ class Profile extends Component {
         } else {
             return  (
                 <div className="MG">
-                    <h2>Tenant Wish List Empty</h2>
+                    <h4>Wish List Empty</h4>
                 </div>
             );
         }
@@ -740,14 +736,13 @@ class Profile extends Component {
     MaterialTableOrdersWaiting() {
         const [state1, setState1] = React.useState({
             columns: [
-                { title: 'Id', field: 'id' },
-                { title: 'Item Id', field: 'itemID' },
+                { title: 'Tenant User Name', field: 'tenantName' },
+                { title: 'Tenant Email', field: 'tenantEmail' },
                 { title: 'Total Days', field: 'totalDaysRent' },
                 { title: 'total Price', field: 'totalPriceRent' },
                 { title: 'Start Day', field: 'rentalStartDay' },
                 { title: 'End Day', field: 'rentalEndDay' },
-                { title: 'Tenant User Name', field: 'tenantName' },
-                { title: 'Tenant Email', field: 'tenantEmail' },
+
 
             ]
         });
@@ -802,7 +797,7 @@ class Profile extends Component {
                                 }
                             })
                         ]}
-                        title="Renter Order Waiting for approval"
+                        title="Incoming Orders - Pending"
                         columns={state1.columns}
                         icons={tableIcons}
                         data={this.state.renterAllOrdersWaiting}
@@ -812,7 +807,7 @@ class Profile extends Component {
         } else {
             return  (
                 <div className="MG">
-                    <h2>Renter Orders Waiting list Empty</h2>
+                    <h4>Incoming Orders - Pending list Empty</h4>
                 </div>
             );
         }
@@ -842,15 +837,14 @@ class Profile extends Component {
     MaterialTableOrdersApproved() {
         const [state1, setState1] = React.useState({
             columns: [
-                { title: 'Id', field: 'id' },
-                { title: 'Item Id', field: 'itemID' },
-                { title: 'status', field: 'status' },
-                { title: 'Total Days', field: 'totalDaysRent' },
-                { title: 'total Price', field: 'totalPriceRent' },
-                { title: 'Start Day', field: 'rentalStartDay' },
-                { title: 'End Day', field: 'rentalEndDay' },
                 { title: 'Tenant User Name', field: 'tenantName' },
-                { title: 'Tenant Email', field: 'tenantEmail' }
+                { title: 'Tenant Email', field: 'tenantEmail'},
+                { title: 'Status', field: 'status'  },
+                { title: 'Total Days', field: 'totalDaysRent'  },
+                { title: 'Total Price', field: 'totalPriceRent'  },
+                { title: 'Start Day', field: 'rentalStartDay' },
+                { title: 'End Day', field: 'rentalEndDay'  },
+
             ]
         });
 
@@ -897,7 +891,7 @@ class Profile extends Component {
                                 }
                             })
                         ]}
-                        title="Renter Orders"
+                        title="Incoming Orders - Approved"
                         columns={state1.columns}
                         icons={tableIcons}
                         data={this.state.renterAllOrdersApproved}
@@ -907,7 +901,7 @@ class Profile extends Component {
         } else {
             return  (
                 <div className="MG">
-                    <h2>Renter Orders list Empty</h2>
+                    <h4>Incoming Orders - Approved list Empty</h4>
                 </div>
             );
         }
@@ -1023,6 +1017,7 @@ class Profile extends Component {
                                 changeRating={this.changeRating}
                                 numberOfStars={5}
                                 name='rankStars'
+                                starHoverColor={'rgb(109, 122, 130)'}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -1066,6 +1061,7 @@ class Profile extends Component {
                                 changeRating={this.changeRating}
                                 numberOfStars={5}
                                 name='rankStars'
+                                starHoverColor={'rgb(109, 122, 130)'}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -1097,13 +1093,12 @@ class Profile extends Component {
     MaterialTableOrdersTenant() {
         const [state1, setState1] = React.useState({
             columns: [
-                { title: 'Id', field: 'id' },
                 { title: 'Status', field: 'status' },
-                { title: 'Item Manufacturer', field: 'item.itemSCategory' },
-                { title: 'Item Modele', field: 'item.itemTCategory' },
-                { title: 'Item Year Of Production', field: 'item.year_of_production' },
+                { title: 'Manufacturer', field: 'item.itemSCategory' },
+                { title: 'Model', field: 'item.itemTCategory' },
+                { title: 'Year', field: 'item.year_of_production' },
                 { title: 'Total Days', field: 'totalDaysRent' },
-                { title: 'total Price', field: 'totalPriceRent' },
+                { title: 'Total Price', field: 'totalPriceRent' },
                 { title: 'Start Day', field: 'rentalStartDay' },
                 { title: 'End Day', field: 'rentalEndDay' },
                 { title: 'Owner Name', field: 'item.ownerName' },
@@ -1158,7 +1153,7 @@ class Profile extends Component {
                                 onClick: (event, rowData) =>
                                 {
                                     if (rowData.status === 'WAITING' || rowData.status === 'APPROVED') {
-                                        Alert.error('tenant can not rank item while waiting for approval!');
+                                        Alert.error('You can rank the renter after order is on status finished');
                                     } else {
                                         this.setState({
                                             openDItem: true,
@@ -1169,7 +1164,7 @@ class Profile extends Component {
                                 }
                             })
                         ]}
-                        title="Tenant Ordered Items"
+                        title="Ordered Items"
                         columns={state1.columns}
                         icons={tableIcons}
                         data={this.state.tenantAllOrders}
@@ -1179,7 +1174,7 @@ class Profile extends Component {
         } else {
             return  (
                 <div className="MG">
-                    <h2>Tenant Ordered Items Empty</h2>
+                    <h4>Ordered Items Empty</h4>
                 </div>
             );
         }

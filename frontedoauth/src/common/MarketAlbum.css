@@ -1,5 +1,5 @@
 .root {
-    display: inline-flex !important;
+    display: flex !important;
     flexWrap: wrap;
     justifyContent: space-around;
     overflow: hidden;
@@ -10,6 +10,7 @@
     margin: 0 !important;
     width: 100%;
     height: 100%;
+
 }
 .icon {
     color: rgba(255, 255, 255, 0.54) !important;

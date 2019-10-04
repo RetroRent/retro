@@ -1,9 +1,26 @@
 .home-container {
     text-align: center;
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 200px);
+    max-height: calc(100vh - 400px) ;
     overflow: auto;
     position: relative;
     padding-top: 60px;
+}
+.container
+{
+    overflow: auto;
+
+
+}
+
+.carousel-caption
+{
+    text-shadow: 1px 1px black;
+
+}
+.carousel-item, .carousel-item img{
+    max-height: 80vh;
+
 }
 
 .home-title {

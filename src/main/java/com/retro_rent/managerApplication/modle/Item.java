@@ -1,9 +1,5 @@
 package com.retro_rent.managerApplication.modle;
-<<<<<<< HEAD
 
-=======
-#test
->>>>>>> 57be3bc097a2076053927663305dd9ab6c4d29f7
 import javax.persistence.*;
 import java.time.Year;
 import java.util.List;

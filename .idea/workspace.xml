@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ae193af-f07f-43fd-9e93-17cadbd3350e" name="Default" comment="" />
+    <list default="true" id="0ae193af-f07f-43fd-9e93-17cadbd3350e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retro_rent/managerApplication/modle/tes3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retro_rent/managerApplication/modle/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retro_rent/managerApplication/modle/test2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retro_rent/managerApplication/modle/test4.txt" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +33,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\LiorCode\LiorCode\project\manager\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -41,6 +53,7 @@
   <component name="ProjectId" id="1QO32T3WDAIpOCWZW9cxEK0P5jI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -59,13 +72,12 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.5\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.retro_rent.manager.payload" />
-      <recent name="com.retro_rent.manager.Dao" />
-      <recent name="com.retro_rent.manager.modle" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Code\LiorCode\project\manager" />
+      <recent name="E:\Code\LiorCode\project\manager\src\main\resources\WEB-INF" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.retro_rent.manager.payload" />
@@ -84,9 +96,10 @@
       <recent name="com.retro_rent.manager.controllers" />
       <recent name="com.retro_rent.manager.Service" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Code\LiorCode\project\manager" />
-      <recent name="E:\Code\LiorCode\project\manager\src\main\resources\WEB-INF" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.retro_rent.manager.payload" />
+      <recent name="com.retro_rent.manager.Dao" />
+      <recent name="com.retro_rent.manager.modle" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -314,7 +327,10 @@
       <workItem from="1567666409933" duration="1747000" />
       <workItem from="1567708047094" duration="21280000" />
       <workItem from="1568836689657" duration="2983000" />
-      <workItem from="1568916202782" duration="877000" />
+      <workItem from="1568916202782" duration="4644000" />
+      <workItem from="1569582313286" duration="73854000" />
+      <workItem from="1570033802299" duration="820000" />
+      <workItem from="1570038512698" duration="32610000" />
     </task>
     <servers />
   </component>
@@ -386,6 +402,11 @@
           <url>file://$PROJECT_DIR$/frontedoauth/src/user/edit/edit.js</url>
           <line>32</line>
           <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontedoauth/src/user/renter/ViewRenterPage.js</url>
+          <line>78</line>
+          <option name="timeStamp" value="267" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

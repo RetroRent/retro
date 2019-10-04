@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Home.css';
 import Carousel from 'react-bootstrap/Carousel'
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,25 +14,26 @@ import mainPic9 from "../img/ford-chevrolet-retro-cars.jpg"
 
 class Home extends Component {
     render() {
+        const classes = {};
+
         return (
             <div className="home-container">
                 <div className="container">
                     <Carousel>
                         <Carousel.Item>
+                            <div className="carousel-caption">
+                                <h2>Welcome to RetroRent</h2>
+                                <h3>The Most Amazing Retro Marketplace</h3>
+                            </div>
+
                             <img
                                 className="d-block w-100"
-                                src={mainPic}
+                                src={mainPic9}
                                 alt="pic"
-                            />
-                        </Carousel.Item>
 
-                        <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={mainPic3}
-                            alt="pic"
-                        />
-                    </Carousel.Item>
+                            />
+
+                        </Carousel.Item>
 
                         <Carousel.Item>
                             <img
@@ -40,6 +41,9 @@ class Home extends Component {
                                 src={mainPic5}
                                 alt="pic"
                             />
+                            <div className="carousel-caption">
+                                <h3>Click on Market to Start</h3>
+                            </div>
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
@@ -65,7 +69,7 @@ class Home extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src={mainPic9}
+                                src={mainPic}
                                 alt="pic"
                             />
                         </Carousel.Item>
